@@ -7,7 +7,7 @@ It enables Raphael to import raw SVG data.
 ### Usage
 
     var paper = Raphael(10, 10, 800, 500);
-    paper.importSVG('<sgv><rect x="53.603" y="93.813" fill="#FF00FF" width="106.211" height="106.211"/></svg>')
+    paper.importSVG('<svg><rect x="53.603" y="93.813" fill="#FF00FF" width="106.211" height="106.211"/></svg>')
 
 You can export a svg file from Inkscape or Illustrator, open it with a plain text editor and dump it in there.<br/>
 The plugin will filter out the necessary.
