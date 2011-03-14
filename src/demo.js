@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var SvgImportDemo = Class.create({
   initialize: function() {
     // set paper
@@ -14,7 +15,15 @@ var SvgImportDemo = Class.create({
   },
   importSVG: function() {
     this.paper.importSVG(prompt("Paste your raw SVG data here:"));
-  }
-});
+=======
+  var paper = Raphael(document.getElementById("paper"), document.body.clientWidth, document.body.clientHeight);
 
+  function importSVG() {
+    paper.importSVG(prompt("Paste your raw SVG data here:"));
+>>>>>>> 9f28a2f060554a8bbe8d99ef5e1842fb9787a696
+  }
+
+<<<<<<< HEAD
 var Demo = new SvgImportDemo();
+=======
+>>>>>>> 9f28a2f060554a8bbe8d99ef5e1842fb9787a696
