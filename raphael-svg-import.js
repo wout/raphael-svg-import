@@ -2,7 +2,6 @@
  * Raphael SVG Import 0.0.1 - Extension to Raphael JS
  *
  * Copyright (c) 2009 Wout Fierens, 2011 Georgi Momchilov, Matt Cook
- * Modified by Matt Cook to remove Prototype.js dependancy.
  * Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
  */
 Raphael.fn.importSVG = function (raw_svg) {
@@ -15,14 +14,12 @@ Raphael.fn.importSVG = function (raw_svg) {
    var find_attr = new RegExp('([a-z\-]+)="(.*?)"',"gi");
    var find_style = new RegExp("([a-z\-]+) ?: ?([^ ;]+)[ ;]?","gi");
    var find_nodes = new RegExp("<(rect|polyline|circle|ellipse|path|polygon|image|text).*?\/>","gi"); 
-   var match = null;
    while(match = find_nodes.exec(raw_svg)){      
         var attr = { "stroke-width": 0, "fill":"#fff" };
         var node = RegExp.$1;
         var shape;
-        if (match) {
-          var style;
-	  while(find_attr.exec(match)){
+        var style;
+	while(find_attr.exec(match)){
             switch(RegExp.$1) {
               case "stroke-dasharray":
                 attr[RegExp.$1] = "- ";
@@ -64,8 +61,7 @@ Raphael.fn.importSVG = function (raw_svg) {
           //-F break;
         }
         shape.attr(attr);
-      }
-    };
+     };
   } catch (error) {
     alert("The SVG data you entered was invalid! (" + error + ")");
   }
