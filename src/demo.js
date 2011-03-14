@@ -1,4 +1,4 @@
-var DemoHelper = Class.create({
+var SvgImportDemo = Class.create({
   initialize: function() {
     // set paper
     var dim = document.viewport.getDimensions();
@@ -17,4 +17,4 @@ var DemoHelper = Class.create({
   }
 });
 
-var Demo = new DemoHelper();
+var Demo = new SvgImportDemo();

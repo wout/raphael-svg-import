@@ -1,5 +1,5 @@
 /*
- * Raphael SVG Import 0.0.1 - Extension to Raphael JS
+ * Raphael SVG Import 0.0.2 - Extension to Raphael JS
  *
  * Copyright (c) 2009 Wout Fierens
  * Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
@@ -50,7 +50,7 @@ Raphael.fn.importSVG = function (raw_svg) {
             shape = this.path(attr["d"]);
           break;
           case "polygon":
-            shape = this.polygon(attr["points"]);
+            shape = this.polygon(0, 0, attr["points"]);
           break;
           case "image":
             shape = this.image();
@@ -65,17 +65,4 @@ Raphael.fn.importSVG = function (raw_svg) {
   } catch (error) {
     alert("The SVG data you entered was invalid! (" + error + ")");
   }
-};
-
-// extending raphael with a polygon function
-Raphael.fn.polygon = function(point_string) {
-  var poly_array = ["M"];
-  $w(point_string).each(function(point, i) {
-    point.split(",").each(function(c) {
-      poly_array.push(parseFloat(c));
-    });
-    if (i == 0) poly_array.push("L");
-  });
-  poly_array.push("Z");
-  return this.path(poly_array.compact());
 };
