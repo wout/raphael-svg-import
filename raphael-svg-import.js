@@ -1,7 +1,9 @@
 /*
  * Raphael SVG Import 0.0.3 - Extension to Raphael JS
  *
- * Copyright (c) 2011 Wout Fierens, Georgi Momchilov and Matt Cook
+ * Copyright (c) 2011 Wout Fierens
+ * - Load order fix by Georgi Momchilov
+ * - Prototype dependency removed by Matt Cook
  * Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
  */
 Raphael.fn.importSVG = function (rawSVG) {

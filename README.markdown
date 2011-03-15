@@ -36,4 +36,4 @@ Nothing fancy but it gives you a starting point.
 
 ## Copyright
 
-Copyright (c) 2011 Wout Fierens, Georgi Momchilov and Matt Cook. See LICENSE.txt for further details.
+Copyright (c) 2011 Wout Fierens. See LICENSE.txt for further details.
