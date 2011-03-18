@@ -18,7 +18,8 @@ Raphael.fn.importSVG = function (rawSVG) {
     
     var findAttr  = new RegExp('([a-z\-]+)="(.*?)"','gi'),
         findStyle = new RegExp('([a-z\-]+) ?: ?([^ ;]+)[ ;]?','gi'),
-        findNodes = new RegExp('<(rect|polyline|circle|ellipse|path|polygon|image|text).*?\/>','gi');
+        findNodes = new RegExp('<(rect|polyline|circle|ellipse|path|polygon|image|text).*?\/>','gi'),
+        svgSet    = this.set();
     
     while(match = findNodes.exec(rawSVG)){      
       var shape, style,
@@ -70,9 +71,14 @@ Raphael.fn.importSVG = function (rawSVG) {
         //-F break;
       }
       shape.attr(attr);
+      svgSet.push(shape);
     };
+    
+    return svgSet;
+    
   } catch (error) {
     alert('The SVG data you entered was invalid! (' + error + ')');
+    return undefined;
   }
 };
 
