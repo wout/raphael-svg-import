@@ -1,12 +1,12 @@
 /*
- * Raphael SVG Import 0.0.3 - Extension to Raphael JS
+ * Raphael SVG Import 0.0.4 - Extension to Raphael JS
  *
  * Copyright (c) 2011 Wout Fierens
  * - Load order fix by Georgi Momchilov
  * - Prototype dependency removed by Matt Cook
  * Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
  */
-Raphael.fn.importSVG = function (rawSVG) {
+Raphael.fn.importSVG = function (rawSVG, set) {
   try {
     if (typeof rawSVG === 'undefined')
       throw 'No data was provided.';
@@ -14,7 +14,7 @@ Raphael.fn.importSVG = function (rawSVG) {
     rawSVG = rawSVG.replace(/\n|\r|\t/gi, '');
     
     if (!rawSVG.match(/<svg(.*?)>(.*)<\/svg>/i))
-      throw "The data you entered doesn't contain SVG.";
+      throw "The data you entered doesn't contain valid SVG.";
     
     var findAttr  = new RegExp('([a-z\-]+)="(.*?)"','gi'),
         findStyle = new RegExp('([a-z\-]+) ?: ?([^ ;]+)[ ;]?','gi'),
@@ -69,7 +69,11 @@ Raphael.fn.importSVG = function (rawSVG) {
         //-F   shape = this.text();
         //-F break;
       }
+      
       shape.attr(attr);
+      
+      if (typeof set !== 'undefined')
+        set.push(shape);
     };
   } catch (error) {
     alert('The SVG data you entered was invalid! (' + error + ')');

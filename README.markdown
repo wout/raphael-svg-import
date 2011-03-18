@@ -1,4 +1,4 @@
-# Raphaël SVG Import plugin - 0.0.3
+# Raphaël SVG Import plugin - 0.0.4
 
 ## What is it?
 An extension to the Raphael Vector Library.<br/>
@@ -7,7 +7,13 @@ It enables Raphael to import raw SVG data.
 ## Usage
 
     var paper = Raphael(10, 10, 800, 500);
-    paper.importSVG('<svg><rect x="50" y="50" fill="#FF00FF" width="100" height="100" /></svg>')
+    paper.importSVG('<svg><rect x="50" y="50" fill="#FF00FF" width="100" height="100" /></svg>');
+
+If you want the imported elements to be grouped in a set, pass the set as an optional parameter:
+
+    var paper = Raphael(10, 10, 800, 500);
+    var set = paper.set();
+    paper.importSVG('<svg><rect x="50" y="50" fill="#FF00FF" width="100" height="100" /></svg>', set);
 
 You can export a svg file from Inkscape or Illustrator, open it with a plain text editor and dump it in there.<br/>
 The plugin will filter out the necessary.
