@@ -6,7 +6,7 @@
  * - Prototype dependency removed by Matt Cook
  * Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
  */
-Raphael.fn.importSVG = function (rawSVG, set) {
+Raphael.fn.importSVG = function (rawSVG, set, callback) {
   try {
     if (typeof rawSVG === 'undefined')
       throw 'No data was provided.';
@@ -74,6 +74,9 @@ Raphael.fn.importSVG = function (rawSVG, set) {
       
       if (typeof set !== 'undefined')
         set.push(shape);
+
+	  if (typeof callback == 'function') 
+		  callback(shape);
     };
   } catch (error) {
     alert('The SVG data you entered was invalid! (' + error + ')');
