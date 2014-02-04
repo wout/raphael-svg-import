@@ -10,21 +10,21 @@ Raphael.fn.importSVG = function (rawSVG, set) {
   try {
     if (typeof rawSVG === 'undefined')
       throw 'No data was provided.';
-    
+
     rawSVG = rawSVG.replace(/\n|\r|\t/gi, '');
-    
+
     if (!rawSVG.match(/<svg(.*?)>(.*)<\/svg>/i))
       throw "The data you entered doesn't contain valid SVG.";
-    
-    var findAttr  = new RegExp('([a-z\-]+)="(.*?)"','gi'),
+
+    var findAttr  = new RegExp('([a-z\-:]+)="(.*?)"','gi'),
         findStyle = new RegExp('([a-z\-]+) ?: ?([^ ;]+)[ ;]?','gi'),
         findNodes = new RegExp('<(rect|polyline|circle|ellipse|path|polygon|image|text).*?\/>','gi');
-    
-    while(match = findNodes.exec(rawSVG)){      
+
+    while(match = findNodes.exec(rawSVG)){
       var shape, style,
           attr = { 'fill':'#000' },
           node = RegExp.$1;
-      
+
       while(findAttr.exec(match)){
         switch(RegExp.$1) {
           case 'stroke-dasharray':
@@ -38,14 +38,14 @@ Raphael.fn.importSVG = function (rawSVG, set) {
           break;
         }
       };
-      
+
       if (typeof attr['stroke-width'] === 'undefined')
         attr['stroke-width'] = (typeof attr['stroke'] === 'undefined' ? 0 : 1);
-      
+
       if (style)
         while(findStyle.exec(style))
           attr[RegExp.$1] = RegExp.$2;
-      
+
       switch(node) {
         case 'rect':
           shape = this.rect();
@@ -63,15 +63,15 @@ Raphael.fn.importSVG = function (rawSVG, set) {
           shape = this.polygon(attr['points']);
         break;
         case 'image':
-          shape = this.image();
+          shape = this.image(attr['xlink:href']);
         break;
         //-F case 'text':
         //-F   shape = this.text();
         //-F break;
       }
-      
+
       shape.attr(attr);
-      
+
       if (typeof set !== 'undefined')
         set.push(shape);
     };
@@ -84,7 +84,7 @@ Raphael.fn.importSVG = function (rawSVG, set) {
 Raphael.fn.polygon = function(pointString) {
   var poly  = ['M'],
       point = pointString.split(' ');
-      
+
   for(var i=0; i < point.length; i++) {
      var c = point[i].split(',');
      for(var j=0; j < c.length; j++) {
@@ -96,6 +96,6 @@ Raphael.fn.polygon = function(pointString) {
       poly.push('L');
   }
   poly.push('Z');
-  
+
   return this.path(poly);
 };
