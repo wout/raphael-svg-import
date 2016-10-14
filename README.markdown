@@ -1,5 +1,5 @@
 # Important!
-I switched from raphael to [svg.js](http://svgjs.com/) for all my vector graphics because [svg.js](http://svgjs.com/) is only a fraction of raphael's size and supports much more core SVG features. Therefore this plugin is no longer supported. Similar functionality can be found in the the [svg.import.js](https://github.com/wout/svg.import.js) plugin for [svg.js](http://svgjs.com/).
+I switched from raphael to [svg.js](http://svgjs.com/) for all my vector graphics because [svg.js](http://svgjs.com/) is only a fraction of raphael's size and supports much more core SVG features. Therefore this plugin is no longer supported. Similar functionality can be found in [svg.js itself](https://github.com/wout/svg.js#import--export-svg).
 
 
 ## Raphaël SVG Import plugin - 0.0.4
