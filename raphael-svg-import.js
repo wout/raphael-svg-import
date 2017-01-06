@@ -89,7 +89,7 @@ Raphael.fn.polygon = function(pointString) {
      var c = point[i].split(',');
      for(var j=0; j < c.length; j++) {
         var d = parseFloat(c[j]);
-        if (d)
+        if (!isNaN(d))
           poly.push(d);
      };
      if (i == 0)
